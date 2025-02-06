@@ -20,7 +20,7 @@ NUM_OF_L = 10
 myLines = []
 storePointsfrom = []
 
-# Line information 
+# Second Line information 
 diffcolor = (255, 255, 0)
 lineColour = (255, 0, 0)
 HeadTwo = (centerWindowPos[0], centerWindowPos[1] - 100)
@@ -63,7 +63,7 @@ def ComputeNewLineSecondQuadrant(distance, prevHead):
 
 # Get the length of the phantom line.
 def CalculateHypotenuse(Oppistite, counter, positionOfSpiral):
-    
+   
     Hypotenuse = (Oppistite / math.sin(math.radians(45)))
     print(f'{positionOfSpiral}: Value of Hypotenuse: {Hypotenuse} | Loop No. {counter}\n')
     return Hypotenuse
@@ -89,7 +89,7 @@ def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
    
     print(f'Right Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
-    return newLineHead 
+    return newLineHead
 
 # Left side spiral
 def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
@@ -119,7 +119,7 @@ def main():
     global Tail
     global Head
 
-    global TailTwo
+    global TailTwo # Second line
     global HeadTwo
 
     # Generate Lines
