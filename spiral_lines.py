@@ -62,21 +62,24 @@ def ComputeNewLineSecondQuadrant(distance, prevHead):
     return endPoint
 
 # Get the length of the phantom line.
-def CalculateHypotenuse(Oppistite, counter):
+def CalculateHypotenuse(Oppistite, counter, positionOfSpiral):
     
     Hypotenuse = (Oppistite / math.sin(math.radians(45)))
-    print(f'Value of Hypotenuse: {Hypotenuse} | Loop No. {counter}\n')
+    print(f'{positionOfSpiral}: Value of Hypotenuse: {Hypotenuse} | Loop No. {counter}\n')
     return Hypotenuse
 
 
 def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
+
+    # Identification string
+    positionOfSpiral = "Right Hand Side"
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter) 
+    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
-    print(f'Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+    print(f'Right Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
     # Counter is used as a switch to change the direction of the each line generated  
     if ( counter % 2 == 0):
@@ -84,19 +87,22 @@ def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
     else:
         newLineHead = ComputeNewLineFirstQuadrant(radius, prevLineHead)
    
-    print(f'New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Right Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
     return newLineHead 
 
 # Left side spiral
 def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
+
+    # Identification string
+    positionOfSpiral = "Left Hand Side"
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter) 
+    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
-    print(f'Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+    print(f'Left Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
     # Counter is used as a switch to change the direction of the each line generated  
     if ( counter % 2 == 0):
@@ -104,8 +110,7 @@ def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
     else:
         newLineHead = ComputeNewLineThirdQuadrant(radius, prevLineHead)
         
-   
-    print(f'New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Left Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
     return newLineHead 
 
