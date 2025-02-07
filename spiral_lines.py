@@ -15,7 +15,7 @@ Head = (centerWindowPos[0], centerWindowPos[1] - 100)
 Tail = (centerWindowPos[0], centerWindowPos[1])
 LINE_WIDTH = 5
 NUM_OF_LINES = 5 
-NUM_OF_L = 10 
+NUM_OF_L = 12 
 
 myLines = []
 storePointsfrom = []
@@ -25,6 +25,16 @@ diffcolor = (255, 255, 0)
 lineColour = (255, 0, 0)
 HeadTwo = (centerWindowPos[0], centerWindowPos[1] - 100)
 TailTwo = (centerWindowPos[0], centerWindowPos[1])
+LINE_WIDTH = 5
+NUM_OF_LINES = 5 
+myLines = []
+storePointsfrom = []
+
+# Second Line information 
+diffcolor = (255, 255, 0)
+lineColour = (255, 0, 0)
+HeadThree = (centerWindowPos[0], centerWindowPos[1] - 100)
+TailThree = (centerWindowPos[0], centerWindowPos[1])
 LINE_WIDTH = 5
 NUM_OF_LINES = 5 
 myLines = []
@@ -68,6 +78,28 @@ def CalculateHypotenuse(Oppistite, counter, positionOfSpiral):
     print(f'{positionOfSpiral}: Value of Hypotenuse: {Hypotenuse} | Loop No. {counter}\n')
     return Hypotenuse
 
+
+def GenerateNewLinesTOP( prevLineHead, prevLineTail, counter):
+
+    # Identification string
+    positionOfSpiral = "TOP Hand Side"
+                
+    # To get the radius of the L_1 unit sphere respective to previous head 
+    lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
+    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+    radius = int(Hypotenuse)
+
+    print(f'Right Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+
+    # Counter is used as a switch to change the direction of the each line generated  
+    if ( counter % 2 == 0):
+        newLineHead = ComputeNewLineSecondQuadrant(radius, prevLineHead)
+    else:
+        newLineHead = ComputeNewLineFirstQuadrant(radius, prevLineHead)
+   
+    print(f'Right Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+
+    return newLineHead
 
 def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
 
@@ -119,8 +151,12 @@ def main():
     global Tail
     global Head
 
-    global TailTwo # Second line
+    global TailTwo # Second Spiral
     global HeadTwo
+
+    global TailThree # Second Spiral
+    global HeadThree
+
 
     # Generate Lines
     for lines in range(NUM_OF_LINES):
@@ -136,6 +172,12 @@ def main():
         TailTwo = HeadTwo
         HeadTwo = newLineHeadTwo
 
+    for lines in range(NUM_OF_LINES):
+        newLineHeadThree = GenerateNewLinesTOP(HeadThree , TailThree, lines)
+        myLines.append([newLineHeadThree, HeadThree])
+        TailThree = HeadThree
+        HeadThree = newLineHeadThree
+
     # Game loop
     running = True
     while running:
@@ -148,7 +190,10 @@ def main():
         # Render Lines
         for lines in range(NUM_OF_L):
                  pygame.draw.line(window, lineColour,myLines[lines][0], myLines[lines][1] , LINE_WIDTH)
-                 
+        
+        for lines in range(4):
+            pygame.draw.line(window, diffcolor,myLines[lines+10][0], myLines[lines+10][1] , LINE_WIDTH)
+
 
 
         
