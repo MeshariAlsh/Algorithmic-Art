@@ -89,15 +89,16 @@ def GenerateNewLinesTOP( prevLineHead, prevLineTail, counter):
     Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
-    print(f'Right Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+    print(f'TOP Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
     # Counter is used as a switch to change the direction of the each line generated  
     if ( counter % 2 == 0):
-        newLineHead = ComputeNewLineSecondQuadrant(radius, prevLineHead)
+        newLineHead = ComputeNewLineThirdQuadrant(-radius, prevLineHead)
+         
     else:
-        newLineHead = ComputeNewLineFirstQuadrant(radius, prevLineHead)
+         newLineHead = ComputeNewLineFourthQuadrant(radius, prevLineHead)
    
-    print(f'Right Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'TOP Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
     return newLineHead
 
@@ -164,11 +165,10 @@ def main():
         myLines.append([newLineHead,Head])
         Tail = Head
         Head = newLineHead
-        #storePointsfrom.append([newLineHead,Head]) # For the spirl to appear on the top of the old spirl coords
 
     for lines in range(NUM_OF_LINES):
         newLineHeadTwo = GenerateNewLinesLEFT(HeadTwo , TailTwo, lines+1)
-        myLines.append([newLineHeadTwo,HeadTwo])
+        myLines.append([newLineHeadTwo, HeadTwo])
         TailTwo = HeadTwo
         HeadTwo = newLineHeadTwo
 
@@ -192,7 +192,7 @@ def main():
                  pygame.draw.line(window, lineColour,myLines[lines][0], myLines[lines][1] , LINE_WIDTH)
         
         for lines in range(4):
-            pygame.draw.line(window, diffcolor,myLines[lines+10][0], myLines[lines+10][1] , LINE_WIDTH)
+            pygame.draw.line(window, diffcolor,myLines[lines+11][0], myLines[lines+11][1] , LINE_WIDTH)
 
 
 
