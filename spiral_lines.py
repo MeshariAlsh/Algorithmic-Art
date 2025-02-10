@@ -10,7 +10,7 @@ centerWindowPos = (sizeWindow[0] / 2 , sizeWindow[1] /2) # To get the coords for
 
 # Line information 
 diffcolor = (255, 255, 0)
-lineColour = (255, 0, 0)
+lineColour = (0, 0, 0)
 Head = (centerWindowPos[0], centerWindowPos[1] - 100)
 Tail = (centerWindowPos[0], centerWindowPos[1])
 LINE_WIDTH = 5
@@ -211,17 +211,11 @@ def main():
             if event.type == pygame.QUIT:
                 running = False 
         
-        window.fill((0, 0, 0))
+        window.fill((245, 245, 220))
 
         # Render Lines
         for lines in range(NUM_OF_L):
                  pygame.draw.line(window, lineColour,myLines[lines][0], myLines[lines][1] , LINE_WIDTH)
-        
-        for lines in range(4):
-            pygame.draw.line(window, lineColour,myLines[lines+11][0], myLines[lines+11][1] , LINE_WIDTH)
-
-
-
         
         pygame.display.flip()
 
