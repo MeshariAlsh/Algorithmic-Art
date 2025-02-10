@@ -16,26 +16,20 @@ Tail = (centerWindowPos[0], centerWindowPos[1])
 LINE_WIDTH = 5
 NUM_OF_LINES = 5 
 NUM_OF_L = 20
-
 myLines = []
 storePointsfrom = []
 
 # Second Line information 
-diffcolor = (255, 255, 0)
-lineColour = (255, 0, 0)
 HeadTwo = (centerWindowPos[0], centerWindowPos[1] - 100)
 TailTwo = (centerWindowPos[0], centerWindowPos[1])
 
-
-# Second Line information 
+# Third Line information 
 HeadThree = (centerWindowPos[0], centerWindowPos[1] - 100)
 TailThree = (centerWindowPos[0], centerWindowPos[1])
 
-
-# Second Line information 
+# Four Line information 
 HeadFour = (centerWindowPos[0], centerWindowPos[1] - 100)
 TailFour = (centerWindowPos[0], centerWindowPos[1])
-
 
 # Function uses derived formula from  L_1 metric unit sphere to find points in the 4th quadrant
 def ComputeNewLineFourthQuadrant(distance, prevHead):
@@ -75,41 +69,17 @@ def CalculateHypotenuse(Oppistite, counter, positionOfSpiral):
     print(f'{positionOfSpiral}: Value of Hypotenuse: {Hypotenuse} | Loop No. {counter}\n')
     return Hypotenuse
 
-
-def GenerateNewLinesRightDown( prevLineHead, prevLineTail, counter):
-
-    # Identification string
-    positionOfSpiral = "TOP Hand Side"
-                
-    # To get the radius of the L_1 unit sphere respective to previous head 
-    lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
-    radius = int(Hypotenuse)
-
-    print(f'TOP Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
-
-    # Counter is used as a switch to change the direction of the each line generated  
-    if ( counter % 2 == 0):
-        newLineHead = ComputeNewLineThirdQuadrant(-radius, prevLineHead)
-         
-    else:
-         newLineHead = ComputeNewLineFourthQuadrant(radius, prevLineHead)
-   
-    print(f'TOP Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
-
-    return newLineHead
-
 def GenerateNewLinesLeftDown( prevLineHead, prevLineTail, counter):
 
     # Identification string
-    positionOfSpiral = "TOP Hand Side"
+    positionOfSpiral = "Left-Down Hand Side"
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
     Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
-    print(f'TOP Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+    print(f'Left-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
     # Counter is used as a switch to change the direction of the each line generated  
     if ( counter % 2 == 0):
@@ -118,31 +88,34 @@ def GenerateNewLinesLeftDown( prevLineHead, prevLineTail, counter):
     else:
          newLineHead = ComputeNewLineFourthQuadrant(-radius, prevLineHead)
    
-    print(f'TOP Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Left-Down Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
     return newLineHead
 
-def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
+
+def GenerateNewLinesRightDown( prevLineHead, prevLineTail, counter):
 
     # Identification string
-    positionOfSpiral = "Right Hand Side"
+    positionOfSpiral = "Right-Down Hand Side"
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
     Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
-    print(f'Right Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+    print(f'Right-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
     # Counter is used as a switch to change the direction of the each line generated  
     if ( counter % 2 == 0):
-        newLineHead = ComputeNewLineFourthQuadrant(radius, prevLineHead)
+        newLineHead = ComputeNewLineThirdQuadrant(-radius, prevLineHead)
+         
     else:
-        newLineHead = ComputeNewLineFirstQuadrant(radius, prevLineHead)
+         newLineHead = ComputeNewLineFourthQuadrant(radius, prevLineHead)
    
-    print(f'Right Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
     return newLineHead
+
 
 # Left side spiral
 def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
@@ -167,6 +140,29 @@ def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
 
     return newLineHead 
 
+def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
+
+    # Identification string
+    positionOfSpiral = "Right Hand Side"
+                
+    # To get the radius of the L_1 unit sphere respective to previous head 
+    lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
+    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+    radius = int(Hypotenuse)
+
+    print(f'Right Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+
+    # Counter is used as a switch to change the direction of the each line generated  
+    if ( counter % 2 == 0):
+        newLineHead = ComputeNewLineFourthQuadrant(radius, prevLineHead)
+    else:
+        newLineHead = ComputeNewLineFirstQuadrant(radius, prevLineHead)
+   
+    print(f'Right Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+
+    return newLineHead
+
+
 def main():
 
     global Tail
@@ -175,10 +171,10 @@ def main():
     global TailTwo # Second Spiral
     global HeadTwo
 
-    global TailThree # Second Spiral
+    global TailThree # Third Spiral
     global HeadThree
 
-    global TailFour # Second Spiral
+    global TailFour # Four Spiral
     global HeadFour
 
 
