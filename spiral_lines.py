@@ -15,7 +15,7 @@ Head = (centerWindowPos[0], centerWindowPos[1] - 100)
 Tail = (centerWindowPos[0], centerWindowPos[1])
 LINE_WIDTH = 5
 NUM_OF_LINES = 5 
-NUM_OF_L = 20
+NUM_OF_RENDERED_LINES = 20
 myLines = []
 storePointsfrom = []
 
@@ -162,7 +162,6 @@ def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
 
     return newLineHead
 
-
 def main():
 
     global Tail
@@ -176,7 +175,6 @@ def main():
 
     global TailFour # Four Spiral
     global HeadFour
-
 
     # Generate Lines
     for lines in range(NUM_OF_LINES):
@@ -203,7 +201,6 @@ def main():
         TailFour = HeadFour
         HeadFour = newLineHeadFour
 
-
     # Game loop
     running = True
     while running:
@@ -214,7 +211,7 @@ def main():
         window.fill((245, 245, 220))
 
         # Render Lines
-        for lines in range(NUM_OF_L):
+        for lines in range(NUM_OF_RENDERED_LINES):
                  pygame.draw.line(window, lineColour,myLines[lines][0], myLines[lines][1] , LINE_WIDTH)
         
         pygame.display.flip()
