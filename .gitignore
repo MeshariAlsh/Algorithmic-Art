@@ -3,10 +3,9 @@ myenv/
 __pycache__/
 
 #unimportant files
-OOP.py
+
 Palm_Tree.py
-Spiral.py
-Util.py
+
 
 .DS_Store 
 
