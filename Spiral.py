@@ -41,7 +41,7 @@ class Spiral:
         Hypotenuse = Util.CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
         radius = int(Hypotenuse)
 
-        print(f'Left-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+        #print(f'Left-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
         # Counter is used as a switch to change the direction of the each line generated  
         if ( counter % 2 == 0):
@@ -50,7 +50,7 @@ class Spiral:
         else:
             newLineHead = Util.ComputeNewLineFourthQuadrant(-radius, prevLineHead)
    
-        print(f'Left-Down Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+        #print(f'Left-Down Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
         return newLineHead
 
@@ -65,7 +65,7 @@ class Spiral:
         Hypotenuse = Util.CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
         radius = int(Hypotenuse)
 
-        print(f'Right-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+        #print(f'Right-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
         # Counter is used as a switch to change the direction of the each line generated  
         if ( counter % 2 == 0):
@@ -74,7 +74,7 @@ class Spiral:
         else:
             newLineHead = Util.ComputeNewLineFourthQuadrant(radius, prevLineHead)
    
-        print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+        #print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
         return newLineHead
 
@@ -90,7 +90,7 @@ class Spiral:
         Hypotenuse = Util.CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
         radius = int(Hypotenuse)
 
-        print(f'Left Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
+        #print(f'Left Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
 
         # Counter is used as a switch to change the direction of the each line generated  
         if ( counter % 2 == 0):
@@ -98,15 +98,15 @@ class Spiral:
         else:
             newLineHead = Util.ComputeNewLineThirdQuadrant(radius, prevLineHead)
         
-        print(f'Left Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+        #print(f'Left Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
 
         return newLineHead 
 
          
     def GenerateNewLinesRIGHT(self, prevHead, prevTail, counter):
 
-        print(f"prevTail: {prevTail}, type: {type(prevTail)}")
-        print(f"prevHead: {prevHead}, type: {type(prevHead)}")
+        #print(f"prevTail: {prevTail}, type: {type(prevTail)}")
+        #print(f"prevHead: {prevHead}, type: {type(prevHead)}")
 
 
         # Identification string
