@@ -44,13 +44,16 @@ def generate_patterns(offset_multiplier, x_step , y_offset, row_type):
            
      for j in range(2,4):
         sign = (-1) ** j 
-        Head = (centerWindowPos[0] + ( offset_multiplier * x_step * sign), centerWindowPos[1] + (y_offset * y_head_multiplier)- (y_offset * (offset_multiplier - 1)))
-        Tail = (centerWindowPos[0] + ( offset_multiplier * x_step * sign), centerWindowPos[1] + (y_offset * y_tail_multiplier)- (y_offset * (offset_multiplier - 1)))
+        Head = (centerWindowPos[0] + ( offset_multiplier * x_step * sign), 
+                centerWindowPos[1] + (y_offset * y_head_multiplier) - (y_offset * (offset_multiplier - 1)))
+        
+        Tail = (centerWindowPos[0] + ( offset_multiplier * x_step * sign), 
+                centerWindowPos[1] + (y_offset * y_tail_multiplier) - (y_offset * (offset_multiplier - 1)))
         print(f"Value of Head: {Head} and Tail: {Tail}  ___{row_type}__")
         myLines.append([Head, Tail])
       
 def generate_row (row_type):
-      
+    
     for offset_multiplier in range(1,3):
          generate_patterns(offset_multiplier, x_step, y_offset, row_type)
             
@@ -60,20 +63,23 @@ def main():
     global Tail
     global myLines
 
+    #Initialise the centered spiral pattern
     spiral1 = Spiral.Spiral(Head, Tail)
     myLines.append([Head, Tail])
-       
+    
+    # Generates the coords for each spiral pattern
     generate_row("middle")
     generate_row("top")
     generate_row("bottom")
 
     print(f"Size of myline: {len(myLines)} \n")
     
+    # Generates the spiral patterns
     for line in range (len(myLines)):
         for variant in range(NUM_OF_SPIRAL_VARIANTS):
             spiral1 = Spiral.Spiral(myLines[line][0], myLines[line][1])
             spiral1.GenerateSpiralPattern(variant)
-            drawing.append(spiral1.lines)
+            drawing.append(spiral1.lines) # Appends it to render later
             spiral1.head= myLines[line][0]
             spiral1.tail = myLines[line][1]
 
@@ -86,7 +92,7 @@ def main():
         
         window.fill((245, 245, 220))
 
-        # Render Lines
+        # Render complete artwork
         for patterns in drawing:
                     for lines in patterns:
                         pygame.draw.line(window, lineColour, lines[0], lines[1] , LINE_WIDTH)
