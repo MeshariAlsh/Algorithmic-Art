@@ -41,6 +41,7 @@ def ComputeNewLineFourthQuadrant(distance, prevHead):
 
 # Function uses derived formula from  L_1 metric unit sphere to find points in the 1st quadrant
 def ComputeNewLineFirstQuadrant(distance, prevHead):
+    print(f"Value of prevhead in FirstQuad: ______________{prevHead}")
 
     midPoint = (distance/ 2)
     k = int(midPoint)
@@ -147,6 +148,9 @@ def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
+    print(f'Right Hand Side: Length of the Phantomlin ------------------({lenOfPhantomLine}) . \n')
+
+    
     Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
