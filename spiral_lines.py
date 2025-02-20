@@ -64,11 +64,11 @@ def ComputeNewLineSecondQuadrant(distance, prevHead):
     return endPoint
 
 # Get the length of the phantom line.
-def CalculateHypotenuse(Oppistite, counter, positionOfSpiral):
+def ModifySpiralStep(Oppistite, counter, positionOfSpiral):
+
+    step_size = (Oppistite * 1.5)
    
-    Hypotenuse = (Oppistite / math.sin(math.radians(45)))
-    print(f'{positionOfSpiral}: Value of Hypotenuse: {Hypotenuse} | Loop No. {counter}\n')
-    return Hypotenuse
+    return step_size
 
 def GenerateNewLinesLeftDown( prevLineHead, prevLineTail, counter):
 
@@ -77,7 +77,7 @@ def GenerateNewLinesLeftDown( prevLineHead, prevLineTail, counter):
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+    Hypotenuse = ModifySpiralStep(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
     print(f'Left-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
@@ -101,7 +101,7 @@ def GenerateNewLinesRightDown( prevLineHead, prevLineTail, counter):
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+    Hypotenuse = ModifySpiralStep(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
     print(f'Right-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
@@ -126,7 +126,7 @@ def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+    Hypotenuse = ModifySpiralStep(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
     print(f'Left Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
@@ -150,8 +150,8 @@ def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
     print(f'Right Hand Side: Length of the Phantomlin ------------------({lenOfPhantomLine}) . \n')
 
-    
-    Hypotenuse = CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+    #CalculateHypotenuse
+    Hypotenuse = ModifySpiralStep(lenOfPhantomLine, counter, positionOfSpiral) 
     radius = int(Hypotenuse)
 
     print(f'Right Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
