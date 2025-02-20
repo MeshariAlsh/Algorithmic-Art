@@ -18,6 +18,7 @@ NUM_OF_LINES = 5
 NUM_OF_RENDERED_LINES = 20
 myLines = []
 storePointsfrom = []
+SPIRAL_STEP_SIZE = 1.5
 
 # Second Line information 
 HeadTwo = (centerWindowPos[0], centerWindowPos[1] - 100)
@@ -66,7 +67,7 @@ def ComputeNewLineSecondQuadrant(distance, prevHead):
 # Get the length of the phantom line.
 def ModifySpiralStep(Oppistite, counter, positionOfSpiral):
 
-    step_size = (Oppistite * 1.5)
+    step_size = (Oppistite * SPIRAL_STEP_SIZE)
    
     return step_size
 
@@ -74,6 +75,9 @@ def GenerateNewLinesLeftDown( prevLineHead, prevLineTail, counter):
 
     # Identification string
     positionOfSpiral = "Left-Down Hand Side"
+
+    print(f'{positionOfSpiral}: Begining points prevLineHead: {prevLineHead}. and prevLineTail {prevLineTail}-- \n')
+
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
@@ -89,7 +93,7 @@ def GenerateNewLinesLeftDown( prevLineHead, prevLineTail, counter):
     else:
          newLineHead = ComputeNewLineFourthQuadrant(-radius, prevLineHead)
    
-    print(f'Left-Down Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} ____ The old points to be a tail now: {prevLineHead}. \n')
 
     return newLineHead
 
@@ -98,6 +102,9 @@ def GenerateNewLinesRightDown( prevLineHead, prevLineTail, counter):
 
     # Identification string
     positionOfSpiral = "Right-Down Hand Side"
+
+    print(f'{positionOfSpiral}: Begining points prevLineHead: {prevLineHead}. and prevLineTail {prevLineTail}-- \n')
+
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
@@ -113,7 +120,7 @@ def GenerateNewLinesRightDown( prevLineHead, prevLineTail, counter):
     else:
          newLineHead = ComputeNewLineFourthQuadrant(radius, prevLineHead)
    
-    print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} ____ The old points to be a tail now: {prevLineHead}. \n')
 
     return newLineHead
 
@@ -123,6 +130,9 @@ def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
 
     # Identification string
     positionOfSpiral = "Left Hand Side"
+
+    print(f'{positionOfSpiral}: Begining points prevLineHead: {prevLineHead}. and prevLineTail {prevLineTail}-- \n')
+
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
@@ -137,7 +147,7 @@ def GenerateNewLinesLEFT( prevLineHead, prevLineTail, counter):
     else:
         newLineHead = ComputeNewLineThirdQuadrant(radius, prevLineHead)
         
-    print(f'Left Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} ____ The old points to be a tail now: {prevLineHead}. \n')
 
     return newLineHead 
 
@@ -145,6 +155,9 @@ def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
 
     # Identification string
     positionOfSpiral = "Right Hand Side"
+
+    print(f'{positionOfSpiral}: Begining points prevLineHead: {prevLineHead}. and prevLineTail {prevLineTail}-- \n')
+
                 
     # To get the radius of the L_1 unit sphere respective to previous head 
     lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
@@ -162,7 +175,7 @@ def GenerateNewLinesRIGHT( prevLineHead, prevLineTail, counter):
     else:
         newLineHead = ComputeNewLineFirstQuadrant(radius, prevLineHead)
    
-    print(f'Right Hand Side: New point after function compute newline: {newLineHead} Loop No {counter}. \n')
+    print(f'Right-Down Hand Side: New point after function compute newline: {newLineHead} ____ The old points to be a tail now: {prevLineHead}. \n')
 
     return newLineHead
 

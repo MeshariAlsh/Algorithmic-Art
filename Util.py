@@ -37,8 +37,8 @@ class Util:
         return endPoint
 
     # Get the length of the phantom line.
-    def CalculateHypotenuse(Oppistite, counter, positionOfSpiral):
+    def ModifySpiralStep(length, SPIRAL_STEP_SIZE):
+
+        step_size = (length * SPIRAL_STEP_SIZE)
    
-        Hypotenuse = (Oppistite / math.sin(math.radians(45)))
-        #print(f'{positionOfSpiral}: Value of Hypotenuse: {Hypotenuse} | Loop No. {counter}\n')
-        return Hypotenuse
+        return step_size

@@ -2,10 +2,11 @@
 from Util import Util  
 import pygame
 
-NUM_OF_LINES = 5 
+
 LINE_WIDTH = 5
-NUM_OF_LINES = 5 
+NUM_OF_STEPS = 5 
 NUM_OF_RENDERED_LINES = 5
+SPIRAL_STEP_SIZE = 1.4
 lineColour = (0, 0, 0)
 
 class Spiral:
@@ -38,7 +39,7 @@ class Spiral:
                 
         # To get the radius of the L_1 unit sphere respective to previous head 
         lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-        Hypotenuse = Util.CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+        Hypotenuse = Util.ModifySpiralStep(lenOfPhantomLine, SPIRAL_STEP_SIZE) 
         radius = int(Hypotenuse)
 
         #print(f'Left-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
@@ -62,7 +63,7 @@ class Spiral:
                 
         # To get the radius of the L_1 unit sphere respective to previous head 
         lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-        Hypotenuse = Util.CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+        Hypotenuse = Util.ModifySpiralStep(lenOfPhantomLine, SPIRAL_STEP_SIZE) 
         radius = int(Hypotenuse)
 
         #print(f'Right-Down Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
@@ -87,7 +88,7 @@ class Spiral:
                 
         # To get the radius of the L_1 unit sphere respective to previous head 
         lenOfPhantomLine = (prevLineTail[1] - prevLineHead[1]) 
-        Hypotenuse = Util.CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+        Hypotenuse = Util.ModifySpiralStep(lenOfPhantomLine, SPIRAL_STEP_SIZE) 
         radius = int(Hypotenuse)
 
         #print(f'Left Hand Side: Length of the radius in Manhattan Metric unit sphere {radius} Loop No {counter}. \n')
@@ -114,7 +115,7 @@ class Spiral:
                 
         # To get the radius of the L_1 unit sphere respective to previous head 
         lenOfPhantomLine = (prevTail[1] - prevHead[1]) 
-        Hypotenuse = Util.CalculateHypotenuse(lenOfPhantomLine, counter, positionOfSpiral) 
+        Hypotenuse = Util.ModifySpiralStep(lenOfPhantomLine, SPIRAL_STEP_SIZE)  
         radius = int(Hypotenuse)
 
         #print(f'Right Hand Side: Value of y  {prevTail[1]} Loop No {counter}. \n')
@@ -133,7 +134,7 @@ class Spiral:
 
         if spiralPattern == 0:
 
-            for i in range(NUM_OF_LINES):
+            for i in range(NUM_OF_STEPS):
                 newLineHead = self.GenerateNewLinesRIGHT(self._head , self._tail, i)
                 self.lines.append([newLineHead, self._head])
                 self._tail = self._head
@@ -141,7 +142,7 @@ class Spiral:
                 
         elif spiralPattern == 1:
              
-             for i in range(NUM_OF_LINES):
+             for i in range(NUM_OF_STEPS):
                 newLineHead = self.GenerateNewLinesLEFT(self._head , self._tail, i)
                 self.lines.append([newLineHead, self._head])
                 self._tail = self._head
@@ -149,7 +150,7 @@ class Spiral:
 
         elif spiralPattern == 2:
              
-             for i in range(NUM_OF_LINES):
+             for i in range(NUM_OF_STEPS):
                 newLineHead = self.GenerateNewLinesRightDown(self._head , self._tail, i)
                 self.lines.append([newLineHead, self._head])
                 self._tail = self._head
@@ -157,7 +158,7 @@ class Spiral:
                 
         elif spiralPattern == 3:
               
-              for i in range(NUM_OF_LINES):
+              for i in range(NUM_OF_STEPS):
                 newLineHead = self.GenerateNewLinesLeftDown(self._head , self._tail, i)
                 self.lines.append([newLineHead, self._head])
                 self._tail = self._head
