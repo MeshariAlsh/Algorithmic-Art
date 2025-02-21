@@ -40,7 +40,7 @@ Stated formula only works for the first quadrant. Getting the formula for other 
 
 ## Figure 1
 
-[](illustrations/figure_one.jpeg)
+[](illustrations/figure_one.png)
 
 
 ### Algorithm Breakdown
@@ -54,7 +54,7 @@ At the end of the main algorithm loop, each point $h_b$  and  $t_b$ generated is
 
 ## Figure 1.1
 
-[](illustrations/figure_of_art.jpeg)
+[](illustrations/figure_of_art.png)
 
 ### Implementation
 Finally, at the end of the program, the grid spiral is rendered using a loop to access the indices of `myLines[]`, which stores the head and tail coordinates for each line segment previously generated. The function to draw a line in the Pygame library is:
