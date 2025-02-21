@@ -53,7 +53,7 @@ The program begins by computing the $h_a$ and $t_a$ from the relative coordinate
 At the end of the main algorithm loop, each point $h_b$  and  $t_b$ generated is appended to the 2D array `myLines[]`, and the points $t_a$ are set to $h_a$ and the $h_a$ is set to the new point generated $h_b$. Thus, when the algorithm starts again, the value of $A$ is set equal to the new line generated $B$. Dynamically updating the coordinates generates new line segments.
 
 ## Figure 1.1
-
+`grid_spiral_OOP.py`
 ![Figure 1.1](illustrations/Figure_of_art.png)
 
 ### Implementation
