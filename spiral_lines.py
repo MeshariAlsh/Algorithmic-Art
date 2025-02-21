@@ -14,23 +14,11 @@ lineColour = (0, 0, 0)
 Head = (centerWindowPos[0], centerWindowPos[1] - 100)
 Tail = (centerWindowPos[0], centerWindowPos[1])
 LINE_WIDTH = 5
-NUM_OF_LINES = 5 
+NUM_OF_STEPS = 5 
 NUM_OF_RENDERED_LINES = 20
 myLines = []
 storePointsfrom = []
 SPIRAL_STEP_SIZE = 1.5
-
-# Second Line information 
-HeadTwo = (centerWindowPos[0], centerWindowPos[1] - 100)
-TailTwo = (centerWindowPos[0], centerWindowPos[1])
-
-# Third Line information 
-HeadThree = (centerWindowPos[0], centerWindowPos[1] - 100)
-TailThree = (centerWindowPos[0], centerWindowPos[1])
-
-# Four Line information 
-HeadFour = (centerWindowPos[0], centerWindowPos[1] - 100)
-TailFour = (centerWindowPos[0], centerWindowPos[1])
 
 # Function uses derived formula from  L_1 metric unit sphere to find points in the 4th quadrant
 def ComputeNewLineFourthQuadrant(distance, prevHead):
@@ -65,9 +53,9 @@ def ComputeNewLineSecondQuadrant(distance, prevHead):
     return endPoint
 
 # Get the length of the phantom line.
-def ModifySpiralStep(Oppistite, counter, positionOfSpiral):
+def ModifySpiralStep(length, counter, positionOfSpiral):
 
-    step_size = (Oppistite * SPIRAL_STEP_SIZE)
+    step_size = (length * SPIRAL_STEP_SIZE)
    
     return step_size
 
@@ -184,39 +172,39 @@ def main():
     global Tail
     global Head
 
-    global TailTwo # Second Spiral
-    global HeadTwo
-
-    global TailThree # Third Spiral
-    global HeadThree
-
-    global TailFour # Four Spiral
-    global HeadFour
-
     # Generate Lines
-    for lines in range(NUM_OF_LINES):
+    for lines in range(NUM_OF_STEPS):
         newLineHead = GenerateNewLinesRIGHT(Head , Tail, lines)
         myLines.append([newLineHead,Head])
         Tail = Head
         Head = newLineHead
 
-    for lines in range(NUM_OF_LINES):
-        newLineHeadTwo = GenerateNewLinesLEFT(HeadTwo , TailTwo, lines+1)
-        myLines.append([newLineHeadTwo, HeadTwo])
-        TailTwo = HeadTwo
-        HeadTwo = newLineHeadTwo
+    Head = (centerWindowPos[0], centerWindowPos[1] - 100)
+    Tail = (centerWindowPos[0], centerWindowPos[1])
+    
+    for lines in range(NUM_OF_STEPS):
+        newLineHead = GenerateNewLinesLEFT(Head , Tail, lines+1)
+        myLines.append([newLineHead, Head])
+        Tail = Head
+        Head = newLineHead
 
-    for lines in range(NUM_OF_LINES):
-        newLineHeadThree = GenerateNewLinesRightDown(HeadThree , TailThree, lines)
-        myLines.append([newLineHeadThree, HeadThree])
-        TailThree = HeadThree
-        HeadThree = newLineHeadThree
+    Head = (centerWindowPos[0], centerWindowPos[1] - 100)
+    Tail = (centerWindowPos[0], centerWindowPos[1])
+        
+    for lines in range(NUM_OF_STEPS):
+        newLineHead = GenerateNewLinesRightDown(Head , Tail, lines)
+        myLines.append([newLineHead, Head])
+        Tail = Head
+        Head = newLineHead
 
-    for lines in range(NUM_OF_LINES):
-        newLineHeadFour = GenerateNewLinesLeftDown(HeadFour , TailFour, lines+1)
-        myLines.append([newLineHeadFour, HeadFour])
-        TailFour = HeadFour
-        HeadFour = newLineHeadFour
+    Head = (centerWindowPos[0], centerWindowPos[1] - 100)
+    Tail = (centerWindowPos[0], centerWindowPos[1])
+        
+    for lines in range(NUM_OF_STEPS):
+        newLineHead = GenerateNewLinesLeftDown(Head , Tail, lines+1)
+        myLines.append([newLineHead, Head])
+        Tail = Head
+        Head = newLineHead
 
     # Game loop
     running = True
